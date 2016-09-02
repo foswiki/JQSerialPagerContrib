@@ -1,6 +1,6 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
-# JQSerialPagerContrib is Copyright (C) 2012 Michael Daum http://michaeldaumconsulting.com
+# JQSerialPagerContrib is Copyright (C) 2012-2016 Michael Daum http://michaeldaumconsulting.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -18,8 +18,8 @@ package Foswiki::Contrib::JQSerialPagerContrib;
 use strict;
 use warnings;
 
-our $VERSION = '1.00';
-our $RELEASE = '1.00';
+our $VERSION = '1.01';
+our $RELEASE = '02 Sep 2016';
 our $SHORTDESCRIPTION = 'Splits up a list and makes it a pager scroller thingy';
 our $NO_PREFS_IN_TOPIC = 1;
 

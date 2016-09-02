@@ -102,17 +102,15 @@
 
       // fix width of pages
       setTimeout(function() {
-        var $widthElem = opts.widthElem?$(opts.widthElem):$pager,
+        var $widthElem = opts.widthElem?$pager.find(opts.widthElem).first():$pager,
             width = $widthElem.width();
         if (width) {
 	  $pager.find(".jqSerialPagerPage").css("width", width);
 	}
       }, 0);
 
-      $pager.width(opts.width).show();
-    } else {
-      $pager.removeClass("jqSerialPager");
-    }
+      $pager.width(opts.width);
+    } 
 
     return $pager;
   };
@@ -123,7 +121,7 @@
       var $this = $(this),
           opts = $.extend({}, defaults, $this.data(), $this.metadata());
 
-      $this.addClass("jqInitedSerialPager").serialPager(opts);
+      $this.serialPager(opts).addClass("jqInitedSerialPager");
     });
   });
 })(jQuery);

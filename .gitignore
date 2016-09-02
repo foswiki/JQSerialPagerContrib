@@ -1,0 +1,13 @@
+igp_*
+*.gz
+genpdf_*
+pub/System/JQSerialPagerContrib/jquery.serialpager.js
+pub/System/JQSerialPagerContrib/jquery.serialpager.css
+*.swp
+/JQSerialPagerContrib.md5
+/JQSerialPagerContrib.sha1
+/JQSerialPagerContrib.tgz
+/JQSerialPagerContrib.txt
+/JQSerialPagerContrib.zip
+/JQSerialPagerContrib_installer
+/JQSerialPagerContrib_installer.pl

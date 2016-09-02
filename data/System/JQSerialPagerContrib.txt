@@ -1,6 +1,6 @@
 %META:TOPICINFO{author="ProjectContributor" date="1342039693" format="1.1" reprev="2" version="2"}%
 ---+!! %TOPIC%
-%SHORTDESCRIPTION%
+%FORMFIELD{"Description"}%
 
 %TOC%
 
@@ -86,27 +86,26 @@ This will process all list items inside according to the given parameters.
 </literal>
 
 ---++ Installation Instructions
-
 %$INSTALL_INSTRUCTIONS%
 
 %T% Note you need to run =configure= & =save= at least once. This will automatically
 register the serial pager widget to Foswiki.
 
+---++ Dependencies
+%$DEPENDENCIES%
 
----++ Info
-<!--
-   * Set SHORTDESCRIPTION = %$SHORTDESCRIPTION%
--->
-
-|  Author(s): | Michael Daum|
-|  Copyright: | &copy; 2012 Michael Daum http://michaeldaumconsulting.com |
-|  License: | [[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]] |
-|  Release: | %$RELEASE% |
-|  Version: | %$VERSION% |
-|  Change History: | <!-- versions below in reverse order -->&nbsp; |
+---++ Change History
+|  02 Sep 2016: | fixed calculation of width of lists items in pager |
 |  11 Jul 2012: | initial release |
-|  Dependencies: | %$DEPENDENCIES% |
-|  Home page: | Foswiki:Extensions/%TOPIC% |
-|  Support: | Foswiki:Support/%TOPIC% |
 
 %META:FILEATTACHMENT{name="JQSerialPagerContribSnap1.png" attachment="JQSerialPagerContribSnap1.png" attr="" comment="" date="1342038356" size="13939" user="ProjectContributor" version="1"}%
+%META:FORM{name="PackageForm"}%
+%META:FIELD{name="Author" title="Author" value="Michael Daum"}%
+%META:FIELD{name="Copyright" title="Copyright" value="&copy; 2012-2016 Michael Daum http://michaeldaumconsulting.com"}%
+%META:FIELD{name="Description" title="Description" value="%25$SHORTDESCRIPTION%25"}%
+%META:FIELD{name="Home" title="Home" value="Foswiki:Extensions/%TOPIC%"}%
+%META:FIELD{name="License" title="License" value="[[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]]"}%
+%META:FIELD{name="Release" title="Release" value="%$RELEASE%"}%
+%META:FIELD{name="Repository" title="Repository" value="https://github.com/foswiki/%TOPIC%"}%
+%META:FIELD{name="Support" title="Support" value="Foswiki:Support/%TOPIC%"}%
+%META:FIELD{name="Version" title="Version" value="%$VERSION%"}%

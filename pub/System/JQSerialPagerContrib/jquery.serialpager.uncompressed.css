@@ -1,7 +1,10 @@
 .jqSerialPager {
   overflow:hidden;
   padding:0em;
-  display:none; /* switched on by javascript */
+  display:none; 
+}
+.jqInitedSerialPager {
+  display:block;
 }
 .jqSerialPagerScrollPane {
   width:39000px;

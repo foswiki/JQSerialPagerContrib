@@ -1,6 +1,6 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
-# JQSerialPagerContrib is Copyright (C) 2012 Michael Daum http://michaeldaumconsulting.com
+# JQSerialPagerContrib is Copyright (C) 2012-2016 Michael Daum http://michaeldaumconsulting.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -27,7 +27,7 @@ sub new {
   my $this = bless(
     $class->SUPER::new(
       name => 'SerialPager',
-      version => '1.0',
+      version => '1.01',
       author => 'Michael Daum',
       homepage => 'http://foswiki.org/Extensions/JQSerialPagerContrib',
       documentation => 'JQSerialPagerContrib',
