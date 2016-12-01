@@ -1,0 +1,5 @@
+{
+  "prev": "zurück",
+  "next": "weiter"
+}
+

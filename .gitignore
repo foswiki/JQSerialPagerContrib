@@ -1,3 +1,5 @@
+*~
+*.jslint
 igp_*
 *.gz
 genpdf_*

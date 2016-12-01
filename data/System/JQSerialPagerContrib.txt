@@ -26,7 +26,7 @@ the serial pager widget is available for use on the current page. This will proc
 wrapped into a DIV element using the =jqSerialPager= class.
 
 <verbatim class="html">
-<div class="jqSeriaPager {parameters}">
+<div class="jqSeriaPager" data-parameters="...">
    * list item 
    * list item 
    * ...
@@ -42,14 +42,12 @@ This will process all list items inside according to the given parameters.
 | duration | speed of animation effect flipping pages | 500 |
 | cycle | boolean flag whether to jump to the first page when proceeding after the last one | true |
 | counter | boolean flag whether to display the page indicator at the bottom, e.g. 1/7 means: page one of seven | true |
-| prevText | label of the previous page link | prev |
-| nextText | label of the next page link | next |
 
 ---++ Examples
 
 %JQREQUIRE{"serialpager"}%
 
-<div class="jqSerialPager myPager {pagesize:5, width:200}">
+<div class="jqSerialPager myPager" data-pagesize="5" data-width="200">
    * item 1
    * item 2
    * item 3
@@ -95,6 +93,7 @@ register the serial pager widget to Foswiki.
 %$DEPENDENCIES%
 
 ---++ Change History
+|  01 Nov 2016: | added filter feature to search in large lists |
 |  02 Sep 2016: | fixed calculation of width of lists items in pager |
 |  11 Jul 2012: | initial release |
 

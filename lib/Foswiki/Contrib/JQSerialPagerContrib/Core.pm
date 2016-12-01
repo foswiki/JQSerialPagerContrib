@@ -27,14 +27,15 @@ sub new {
   my $this = bless(
     $class->SUPER::new(
       name => 'SerialPager',
-      version => '1.01',
+      version => '2.00',
       author => 'Michael Daum',
       homepage => 'http://foswiki.org/Extensions/JQSerialPagerContrib',
       documentation => 'JQSerialPagerContrib',
       css => ['jquery.serialpager.css'],
       javascript => ['jquery.serialpager.js'],
       puburl => '%PUBURLPATH%/%SYSTEMWEB%/JQSerialPagerContrib',
-      dependencies => ['livequery', 'serialscroll'],
+      i18n => $Foswiki::cfg{SystemWebName} . "/JQSerialPagerContrib/i18n",
+      dependencies => ['livequery', 'serialscroll', 'i18n'],
     ),
     $class
   );
