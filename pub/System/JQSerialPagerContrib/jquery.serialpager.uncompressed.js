@@ -96,7 +96,7 @@
     if(self.opts.counter) {
       $counter = $("<div class='jqSerialPagerCounter'>1/"+nrPages+"</div>").appendTo(self.buttons);
     }
-    
+
     // init the serial scroll
     self.elem.serialScroll({
       items:'.jqSerialPagerPage',
@@ -110,11 +110,10 @@
       lock:false,
       easing:self.opts.easing,
       onBefore:function(e, elem, $pane, items, pos) {
-        var cycle = $pane.data("cycle");
-        if (typeof($counter) !== 'undefined') {
+        if (self.opts.counter) {
           $counter.html((pos+1)+"/"+nrPages);
         }
-        if (!cycle) {
+        if (!self.opts.cycle) {
           if (pos === 0) {
             $prev.css("visibility", "hidden");
           } else {
