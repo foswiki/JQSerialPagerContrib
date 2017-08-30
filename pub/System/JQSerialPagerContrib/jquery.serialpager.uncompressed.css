@@ -33,12 +33,12 @@ a.jqSerialPagerPrev:hover {
   float:left;
   background-image:url('../FamFamFamSilkIcons/control_rewind.png');
   padding-left:25px;
-  background-position:0% 100%;
+  background-position:0% 50%;
 }
 a.jqSerialPagerNext,
 a.jqSerialPagerNext:hover {
   float:right;
   background-image:url('../FamFamFamSilkIcons/control_fastforward.png');
-  background-position:100% 100%;
+  background-position:100% 50%;
   padding-right:25px;
 }

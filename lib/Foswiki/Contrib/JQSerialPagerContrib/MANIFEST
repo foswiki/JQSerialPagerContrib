@@ -1,3 +1,4 @@
+!noci
 data/System/JQSerialPagerContrib.txt 0644
 lib/Foswiki/Contrib/JQSerialPagerContrib/Config.spec 0644
 lib/Foswiki/Contrib/JQSerialPagerContrib/Core.pm 0644

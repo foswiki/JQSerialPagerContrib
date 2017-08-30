@@ -94,6 +94,7 @@ register the serial pager widget to Foswiki.
 
 ---++ Change History
 %TABLE{columnwidths="7em" tablewidth="100%"}%
+|  30 Aug 2017: | fixed filter, keeping hidden items when a filter is changing again |
 |  23 Jan 2017: | fixed counting items in a list |
 |  01 Nov 2016: | added filter feature to search in large lists |
 |  02 Sep 2016: | fixed calculation of width of lists items in pager |

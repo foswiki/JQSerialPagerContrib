@@ -1,7 +1,7 @@
 /* 
- * serial scroller
+ * serial pager
  *
- * (c)opyright 2012-2016 Michael Daum http://michaeldaumconsulting.com
+ * (c)opyright 2012-2017 Michael Daum http://michaeldaumconsulting.com
 */
 "use strict";
 (function($) {
@@ -45,7 +45,8 @@
     var self = this,
         nrVals, page,
         $ul = self.elem.find("ul"),
-        $newUl, $prev, $next, $counter,
+        $newUl, $prev, $next, $counter, 
+        $hiddenUl = $("<ul class='foswikiHidden'></ul>"),
         nrPages, $pane, filterRegExp;
 
     if (typeof(self.buttons) !== 'undefined') {
@@ -57,23 +58,19 @@
       filterRegExp = new RegExp(self.opts.filter, "i");
       $ul.children("li").each(function() {
         var li = $(this);
-        if (filterRegExp.test(li.text())) {
-          li.removeClass("foswikiHidden");
-        } else {
-          li.addClass("foswikiHidden");
+        if (!filterRegExp.test(li.text())) {
+          li.appendTo($hiddenUl);
         }
       });
-    } else {
-      $ul.children("li").removeClass("foswikiHidden");
     }
 
-    nrVals = $ul.children("li").not(".foswikiHidden").length;
-
-    // add pager if pagesize is exceeded
-    if (nrVals <= self.opts.pagesize) {
-      return 0;
+    // append hidden elements to pane
+    if ($hiddenUl.children().length) {
+      self.elem.append($hiddenUl);
     }
-    
+
+    nrVals = $ul.children("li").length;
+
     // create pane holding lists if items
     $pane = $("<div class='jqSerialPagerScrollPane clearfix'></div>").appendTo(self.elem);
     nrPages = Math.ceil(nrVals / self.opts.pagesize);
@@ -88,61 +85,63 @@
     // remove the old list as everything has been moved over to the pane
     $ul.remove();
 
-    // create pager ui
-    self.buttons = $("<div class='jqSerialPagerButtons clearfix'></div>").width(self.opts.width).insertAfter(self.elem);
-    $prev = $("<a href='#' class='jqSerialPagerPrev i18n'>prev</a>").appendTo(self.buttons);
-    $next = $("<a href='#' class='jqSerialPagerNext i18n'>next</a>").appendTo(self.buttons);
+    if (nrPages > 1) {
+      // create pager ui
+      self.buttons = $("<div class='jqSerialPagerButtons clearfix'></div>").width(self.opts.width).insertAfter(self.elem);
+      $prev = $("<a href='#' class='jqSerialPagerPrev i18n'>prev</a>").appendTo(self.buttons);
+      $next = $("<a href='#' class='jqSerialPagerNext i18n'>next</a>").appendTo(self.buttons);
 
-    if(self.opts.counter) {
-      $counter = $("<div class='jqSerialPagerCounter'>1/"+nrPages+"</div>").appendTo(self.buttons);
+      if(self.opts.counter) {
+        $counter = $("<div class='jqSerialPagerCounter'>1/"+nrPages+"</div>").appendTo(self.buttons);
+      }
+
+      // initial button state
+      if (!self.opts.cycle) {
+        $prev.css("visibility", "hidden");
+      }
+
+      // init the serial scroll
+      self.elem.serialScroll({
+        items:'.jqSerialPagerPage',
+        prev:$prev,
+        next:$next,
+        constant:false,
+        duration:self.opts.duration,
+        start:0,
+        force:false,
+        cycle:self.opts.cycle,
+        lock:false,
+        easing:self.opts.easing,
+        onBefore:function(e, elem, $pane, items, pos) {
+          if (self.opts.counter) {
+            $counter.html((pos+1)+"/"+nrPages);
+          }
+          if (!self.opts.cycle) {
+            if (pos === 0) {
+              $prev.css("visibility", "hidden");
+            } else {
+              $prev.css("visibility", "visible");
+            }
+            if (pos+1 === nrPages) {
+              $next.css("visibility", "hidden");
+            } else {
+              $next.css("visibility", "visible");
+            }
+          }
+        }
+      });
     }
 
-    // init the serial scroll
-    self.elem.serialScroll({
-      items:'.jqSerialPagerPage',
-      prev:$prev,
-      next:$next,
-      constant:false,
-      duration:self.opts.duration,
-      start:0,
-      force:false,
-      cycle:self.opts.cycle,
-      lock:false,
-      easing:self.opts.easing,
-      onBefore:function(e, elem, $pane, items, pos) {
-        if (self.opts.counter) {
-          $counter.html((pos+1)+"/"+nrPages);
-        }
-        if (!self.opts.cycle) {
-          if (pos === 0) {
-            $prev.css("visibility", "hidden");
-          } else {
-            $prev.css("visibility", "visible");
-          }
-          if (pos+1 === nrPages) {
-            $next.css("visibility", "hidden");
-          } else {
-            $next.css("visibility", "visible");
-          }
-        }
-      }
-    });
-
     // fix width of pages
-    setTimeout(function() {
+    window.setTimeout(function() {
       var $widthElem = self.opts.widthElem?self.elem.find(self.opts.widthElem).first():self.elem,
           width = $widthElem.width();
       if (width) {
-        self.elem.find(".jqSerialPagerPage").css("width", width);
+        self.elem.find(".jqSerialPagerPage").css("width", width+1);
       }
     }, 0);
 
     self.elem.width(self.opts.width);
-
-    // initial button state
-    if (!self.opts.cycle) {
-      $prev.css("visibility", "hidden");
-    }
 
     return nrPages;
   };
@@ -151,12 +150,15 @@
     var self = this,
         $newUl = $("<ul></ul>");
 
-    self.elem.find(".jqSerialPagerPage>li").each(function() {
+    self.elem.find(".jqSerialPagerPage>li, .foswikiHidden>li").each(function() {
       $newUl.append(this);
     });
 
     self.elem.find(".jqSerialPagerScrollPane").remove();
-    $newUl.appendTo(self.elem);
+
+    if ($newUl.children().length) {
+      $newUl.appendTo(self.elem);
+    }
 
     return $newUl.length;
   };

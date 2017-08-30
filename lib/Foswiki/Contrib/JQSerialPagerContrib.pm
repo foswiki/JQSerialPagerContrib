@@ -18,8 +18,8 @@ package Foswiki::Contrib::JQSerialPagerContrib;
 use strict;
 use warnings;
 
-our $VERSION = '2.01';
-our $RELEASE = '23 Jan 2017';
+our $VERSION = '2.10';
+our $RELEASE = '30 Aug 2017';
 our $SHORTDESCRIPTION = 'Splits up a list and makes it a pager scroller thingy';
 our $NO_PREFS_IN_TOPIC = 1;
 
