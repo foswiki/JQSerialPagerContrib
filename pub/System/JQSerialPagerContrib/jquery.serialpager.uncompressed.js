@@ -1,7 +1,7 @@
 /* 
  * serial pager
  *
- * (c)opyright 2012-2017 Michael Daum http://michaeldaumconsulting.com
+ * (c)opyright 2012-2020 Michael Daum http://michaeldaumconsulting.com
 */
 "use strict";
 (function($) {
@@ -47,7 +47,8 @@
         $ul = self.elem.find("ul"),
         $newUl, $prev, $next, $counter, 
         $hiddenUl = $("<ul class='foswikiHidden'></ul>"),
-        nrPages, $pane, filterRegExp;
+        nrPages, $pane, filterRegExp,
+        parentWidth = self.elem.parent().width();
 
     if (typeof(self.buttons) !== 'undefined') {
       self.buttons.remove();
@@ -79,6 +80,9 @@
 
     for (page = 0; page < nrPages; page++) {
       $newUl = $("<ul class='jqSerialPagerPage'></ul>").appendTo($pane);
+      if (parentWidth) {
+        $newUl.width(parentWidth);
+      }
       $ul.find("li:lt("+self.opts.pagesize+")").appendTo($newUl);
     }
 
@@ -136,12 +140,14 @@
     window.setTimeout(function() {
       var $widthElem = self.opts.widthElem?self.elem.find(self.opts.widthElem).first():self.elem,
           width = $widthElem.width();
-      if (width) {
+      if (width && width != parentWidth) {
         self.elem.find(".jqSerialPagerPage").css("width", width+1);
       }
-    }, 0);
+    });
 
-    self.elem.width(self.opts.width);
+    if (self.opts.width !== 'auto') {
+      self.elem.width(self.opts.width);
+    }
 
     return nrPages;
   };

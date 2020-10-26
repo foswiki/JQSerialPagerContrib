@@ -1,6 +1,6 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
-# JQSerialPagerContrib is Copyright (C) 2012-2017 Michael Daum http://michaeldaumconsulting.com
+# JQSerialPagerContrib is Copyright (C) 2012-2020 Michael Daum http://michaeldaumconsulting.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -18,6 +18,7 @@ package Foswiki::Contrib::JQSerialPagerContrib::Core;
 use strict;
 use warnings;
 
+use Foswiki::Contrib::JQSerialPagerContrib ();
 use Foswiki::Plugins::JQueryPlugin::Plugin ();
 our @ISA = qw( Foswiki::Plugins::JQueryPlugin::Plugin );
 
@@ -27,7 +28,7 @@ sub new {
   my $this = bless(
     $class->SUPER::new(
       name => 'SerialPager',
-      version => '2.01',
+      version => $Foswiki::Contrib::JQSerialPagerContrib::VERSION,
       author => 'Michael Daum',
       homepage => 'http://foswiki.org/Extensions/JQSerialPagerContrib',
       documentation => 'JQSerialPagerContrib',
@@ -35,7 +36,7 @@ sub new {
       javascript => ['jquery.serialpager.js'],
       puburl => '%PUBURLPATH%/%SYSTEMWEB%/JQSerialPagerContrib',
       i18n => $Foswiki::cfg{SystemWebName} . "/JQSerialPagerContrib/i18n",
-      dependencies => ['livequery', 'serialscroll', 'i18n'],
+      dependencies => ['serialscroll', 'i18n'],
     ),
     $class
   );
