@@ -3,6 +3,7 @@ data/System/JQSerialPagerContrib.txt 0644
 lib/Foswiki/Contrib/JQSerialPagerContrib/Config.spec 0644
 lib/Foswiki/Contrib/JQSerialPagerContrib/Core.pm 0644
 lib/Foswiki/Contrib/JQSerialPagerContrib/DEPENDENCIES 0644
+lib/Foswiki/Contrib/JQSerialPagerContrib/MANIFEST 0644
 lib/Foswiki/Contrib/JQSerialPagerContrib.pm 0644
 pub/System/JQSerialPagerContrib/i18n/de.js 0644
 pub/System/JQSerialPagerContrib/i18n/en.js 0644
